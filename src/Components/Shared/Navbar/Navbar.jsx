@@ -13,11 +13,10 @@ const Navbar = () => {
                         <div><Logo></Logo></div>
                         <div><Search></Search></div>
                         <div><MenuDropdown></MenuDropdown></div>
-
                     </div>
                 </Container>
             </div>
-            
+
         </div>
     );
 };
