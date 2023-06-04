@@ -5,6 +5,7 @@ import { useContext } from 'react'
 import { TbFidgetSpinner } from 'react-icons/tb'
 import { AuthContext } from '../../providers/AuthProvider'
 import { set } from 'date-fns'
+import { saveUser } from '../../API/auth'
 
 const SignUp = () => {
     const { loading, setLoading, signInWithGoogle, createUser, updateUserProfile } = useContext(AuthContext);
@@ -18,6 +19,8 @@ const SignUp = () => {
         signInWithGoogle()
             .then((result) => {
                 console.log(result.user)
+                // save user to the database
+                saveUser(result.user)
                 navigate(from, { replace: true })
             }).catch((error) => {
                 console.log(error.message);
@@ -51,8 +54,9 @@ const SignUp = () => {
                     .then(result => {
                         updateUserProfile(name, photoURL)
                             .then(() => {
-                            
                                 toast.success('User created successfully');
+                                // user to db
+                                saveUser(result.user)
                                 navigate(from, { replace: true })
                             })
                             .catch(err => {
