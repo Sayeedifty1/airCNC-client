@@ -1,18 +1,19 @@
 import Heading from "../Heading/Heading";
 
 
-const Header = () => {
+const Header = ({roomData}) => {
+    console.log(roomData.image)
     return (
         <>
           <Heading
-                title="Need to set dynamic title here"
-                subtitle="location"
+                title={roomData.title}
+                subtitle={roomData.location}
                 center={false} 
                 ></Heading>  
 
                 <div className="w-full md:h-[60vh] overflow-hidden rounded-xl">
                     {/* TODO:dynamic img */}
-                    <img className="object-cover w-full" src="https://i.ibb.co/nBTVJkn/racer.png" alt="header img" />
+                    <img className={roomData.image} />
                 </div>
         </>
     );
